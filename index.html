@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Bubble</title>
+    <title>Dragon Pop</title>
+    <link rel="stylesheet" type="text/css" href="application.css">
     <script type="text/javascript" src="./assets/jquery-2.1.1.js"></script>
   </head>
   <body>
@@ -11,11 +12,43 @@
     <script src="lib/bubble.js"></script>
     <script src="lib/dragon.js"></script>
     <script src="lib/fireball.js"></script>
-    <canvas id="game-canvas" width="700" height="500"></canvas>
+    <script src="lib/firewall.js"></script>
+
+    <h1>Dragon Pop</h1>
+
+    <div id="options">
+
+    </div>
+
+    <div id="game-container">
+      <canvas id="game-canvas" width="600" height="400"></canvas>
+    </div>
+
+    <div id="controls">
+      <div>MOVE:<br>ARROW KEYS</div>
+      <br>
+      <div>FIREBALL:<br>SPACEBAR</div>
+    </div>
+
     <script>
      var canvas = document.getElementById("game-canvas");
      var ctx = canvas.getContext("2d");
-     new BubbleGame.GameView(new BubbleGame.Game(), ctx).start();
+     var game = new BubbleGame.GameView(new BubbleGame.Game(), ctx);
+
+     requestAnimFrame = (function() {
+       return window.requestAnimationFrame       ||
+              window.webkitRequestAnimationFrame ||
+              window.mozRequestanimationFrame    ||
+              function(callback){
+                window.setTimeout(callback, 1000 / 60);
+              };
+     })();
+     function mainLoop() {
+       requestAnimFrame(mainLoop);
+       game.render();
+     }
+
+    //  requestAnimFrame(mainLoop);
    </script>
   </body>
 </html>
