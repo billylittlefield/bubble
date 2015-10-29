@@ -39,14 +39,13 @@ h1 {
   width: 200px;
   height: 50px;
   text-align: center;
-  background-color: #524E45;
-  margin: 5px auto 0px auto;
-  border: 3px solid #fff;
+  margin: 8px auto 0px auto;
+  border: 2px solid #fff;
 }
 
 #play-game:hover {
   cursor: pointer;
-  border: 3px dashed #fff;
+  border: 2px dashed #fff;
   background-color: #0E8B0A;
 }
 

@@ -20,6 +20,11 @@
   padding: 8px;
 }
 
+#dragon-options > div:hover {
+  border: 2px dashed #fff;
+  padding: 8px;
+}
+
 #dragon-options > div.dragon-select.orange {
   color: #fff;
   text-shadow: 1px 2px #A94638;
