@@ -1,0 +1,78 @@
+#dragon-options {
+  width: 500px;
+  margin: auto;
+}
+
+#dragon-options > div {
+  display:inline-block;
+  padding: 10px;
+  margin: 0 20px
+}
+
+#dragon-options > div > label {
+  text-align: center;
+  display: block;
+  font-size: 24px;
+}
+
+#dragon-options > div.dragon-select {
+  border: 2px solid #fff;
+  padding: 8px;
+}
+
+#dragon-options > div.dragon-select.orange {
+  color: #fff;
+  text-shadow: 1px 2px #A94638;
+}
+
+#dragon-options > div.dragon-select.green {
+  color: #fff;
+  text-shadow: 1px 2px #658626;
+}
+#dragon-options > div.dragon-select.white {
+  color: #fff;
+  text-shadow: 1px 2px #717883;
+}
+
+#dragon-options > div.dragon-select.orange > img {
+  content: url("assets/orange-dragon.gif");
+}
+#dragon-options > div.dragon-select.green > img {
+  content: url("assets/green-dragon.gif");
+}
+#dragon-options > div.dragon-select.white > img {
+  content: url("assets/white-dragon.gif");
+}
+
+.orange.dragon-option {
+  color: #A94638;
+  text-shadow: 1px 1px #fff, -1px -1px #fff;
+}
+
+.orange.dragon-option:hover {
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 1px 2px #A94638;
+}
+
+.green.dragon-option {
+  color: #658626;
+  text-shadow: 1px 1px #fff, -1px -1px #fff;
+}
+
+.green.dragon-option:hover {
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 1px 2px #658626;
+}
+
+.white.dragon-option {
+  cursor: pointer;
+  color: #717883;
+  text-shadow: 1px 1px #fff, -1px -1px #fff;
+}
+
+.white.dragon-option:hover {
+  color: #fff;
+  text-shadow: 1px 2px #717883;
+}

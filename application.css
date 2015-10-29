@@ -1,8 +1,10 @@
+@import 'dragon-options.css';
+@import 'fire-options.css';
+
 @font-face {
     font-family:"Arcade Classic Regular";
     src: url("assets/ARCADECLASSIC.TTF")
 }
-
 
 
 body {
@@ -15,9 +17,42 @@ h1 {
   margin: 0;
 }
 
-
 #options {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  background-image: url("assets/stone.png");
+  background-repeat: repeat;
+}
+
+#options-header {
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 3px 3px #000;
+  text-align: center;
+}
+
+#play-game {
+  font-size: 36px;
+  color: #fff;
+  text-shadow: 3px 3px #000;
   width: 200px;
+  height: 50px;
+  text-align: center;
+  background-color: #524E45;
+  margin: 5px auto 0px auto;
+  border: 3px solid #fff;
+}
+
+#play-game:hover {
+  cursor: pointer;
+  border: 3px dashed #fff;
+  background-color: #0E8B0A;
+}
+
+#play-game > span {
+  position: relative;
+  top: 8px;
 }
 
 #game-container {
@@ -26,15 +61,21 @@ h1 {
   overflow: hidden;
   margin: auto;
   border: 20px double #333;
-  float: left;
 }
 
 #controls {
-  width:160px;
-  position: relative;
-  top: 30px;
-  float:left;
+  width:322px;
   font-size: 30px;
-  margin-left: 20px;
-  text-align: left;
+  margin: auto;
+  text-align: center;
+}
+
+#controls > div {
+  display: inline-block;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
 }
