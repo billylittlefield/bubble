@@ -21,12 +21,13 @@
       <br>
       <div>FIREBALL: SPACEBAR</div>
     </div>
+    </div>
     <div id="game-container">
       <div id="options">
         <div>
           <div id="options-header">CHOOSE YOUR DRAGON</div>
           <div id="dragon-options">
-            <div class="orange dragon-option">
+            <div class="orange dragon-option dragon-select">
               <img id="orange-dragon" src="assets/orange-dragon-2.gif"/>
               <label>Brabiant</label>
             </div>
@@ -43,7 +44,7 @@
         <div>
           <div id="options-header">CHOOSE FIRE COLOR</div>
           <div id="fire-options">
-            <div class="orange fire-option">
+            <div class="orange fire-option fire-select">
               <img id="orange-fire" src="assets/orange-fire-2.gif"/>
               <label>ORANGE</label>
             </div>
@@ -59,7 +60,7 @@
         </div>
         <div id="play-game"><span>START GAME<span></div>
       </div>
-      <canvas id="game-canvas" width="600" height="400"></canvas>
+      <canvas id="game-canvas" width="600" height="440"></canvas>
     </div>
 
 
@@ -69,13 +70,15 @@
      var ctx = canvas.getContext("2d");
      window.DRAGON = "orange";
      window.FIRE = "orange";
+     window.LIVES = 5;
+     window.SCORE = 0;
 
      setTimeout(function() {
        var tile = new Image();
        tile.src = "assets/stone.png";
        var pattern = ctx.createPattern(tile, "repeat");
        ctx.fillStyle = pattern;
-       ctx.fillRect(0, 0, 600, 400);
+       ctx.fillRect(0, 0, 650, 400);
      }, 0);
 
      requestAnimFrame = (function() {
@@ -90,40 +93,30 @@
 
    <script>
     $(function() {
-      $("#orange-dragon").hover(
-        function() { $(this).attr("src", "assets/orange-dragon.gif"); },
-        function() { $(this).attr("src", "assets/orange-dragon-2.gif"); }
-      );
+      $(".dragon-option").hover(
+        function() {
+          $(this).children("#orange-dragon").attr("src", "assets/orange-dragon.gif");
+          $(this).children("#green-dragon").attr("src", "assets/green-dragon.gif");
+          $(this).children("#white-dragon").attr("src", "assets/white-dragon.gif");
+        },
+        function() {
+          $(this).children("#orange-dragon").attr("src", "assets/orange-dragon-2.gif");
+          $(this).children("#green-dragon").attr("src", "assets/green-dragon-2.gif");
+          $(this).children("#white-dragon").attr("src", "assets/white-dragon-2.gif");
+        });
     });
     $(function() {
-      $("#green-dragon").hover(
-        function() { $(this).attr("src", "assets/green-dragon.gif"); },
-        function() { $(this).attr("src", "assets/green-dragon-2.gif"); }
-      );
-    });
-    $(function() {
-      $("#white-dragon").hover(
-        function() { $(this).attr("src", "assets/white-dragon.gif"); },
-        function() { $(this).attr("src", "assets/white-dragon-2.gif"); }
-      );
-    });
-    $(function() {
-      $("#orange-fire").hover(
-        function() { $(this).attr("src", "assets/orange-fire.gif"); },
-        function() { $(this).attr("src", "assets/orange-fire-2.gif"); }
-      );
-    });
-    $(function() {
-      $("#green-fire").hover(
-        function() { $(this).attr("src", "assets/green-fire.gif"); },
-        function() { $(this).attr("src", "assets/green-fire-2.gif"); }
-      );
-    });
-    $(function() {
-      $("#blue-fire").hover(
-        function() { $(this).attr("src", "assets/blue-fire.gif"); },
-        function() { $(this).attr("src", "assets/blue-fire-2.gif"); }
-      );
+      $(".fire-option").hover(
+        function() {
+          $(this).children("#orange-fire").attr("src", "assets/orange-fire.gif");
+          $(this).children("#green-fire").attr("src", "assets/green-fire.gif");
+          $(this).children("#blue-fire").attr("src", "assets/blue-fire.gif");
+        },
+        function() {
+          $(this).children("#orange-fire").attr("src", "assets/orange-fire-2.gif");
+          $(this).children("#green-fire").attr("src", "assets/green-fire-2.gif");
+          $(this).children("#blue-fire").attr("src", "assets/blue-fire-2.gif");
+        });
     });
     $(function() {
       $(".dragon-option").click(function() {
@@ -153,6 +146,7 @@
     })
     $(function() {
       $("#play-game").click(function() {
+        $("#play-game").addClass("game-select");
         $("#options").fadeOut(1500);
         setTimeout(function() {
           var gameView = new BubbleGame.GameView(new BubbleGame.Game(), ctx);

@@ -15,7 +15,11 @@
   font-size: 24px;
 }
 
-#fire-options > div.fire-select {
+#fire-options > div > label:hover {
+  cursor: pointer;
+}
+
+div#fire-options > div.fire-select {
   border: 2px solid #fff;
   padding: 8px;
 }
@@ -27,7 +31,7 @@
 
 #fire-options > div.fire-select.orange {
   color: #fff;
-  text-shadow: 1px 2px #D89406;
+  text-shadow: 1px 2px #C8720D;
 }
 
 #fire-options > div.fire-select.green {
@@ -36,7 +40,7 @@
 }
 #fire-options > div.fire-select.blue {
   color: #fff;
-  text-shadow: 1px 2px #6E8CD8;
+  text-shadow: 1px 2px #3451C8;
 }
 
 #fire-options > div.fire-select.orange > img {
@@ -51,13 +55,13 @@
 
 .orange.fire-option {
   cursor: pointer;
-  color: #D89406;
+  color: #C8720D;
   text-shadow: 1px 1px #fff, -1px -1px #fff;
 }
 
 .orange.fire-option:hover {
   color: #fff;
-  text-shadow: 1px 2px #D89406;
+  text-shadow: 1px 2px #C8720D;
 }
 
 .green.fire-option {
@@ -73,11 +77,11 @@
 
 .blue.fire-option {
   cursor: pointer;
-  color: #6E8CD8;
+  color: #3451C8;
   text-shadow: 1px 1px #fff, -1px -1px #fff;
 }
 
 .blue.fire-option:hover {
   color: #fff;
-  text-shadow: 1px 2px #6E8CD8;
+  text-shadow: 1px 2px #3451C8;
 }

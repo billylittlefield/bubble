@@ -15,7 +15,11 @@
   font-size: 24px;
 }
 
-#dragon-options > div.dragon-select {
+#dragon-options > div > label:hover {
+  cursor: pointer;
+}
+
+div#dragon-options > div.dragon-select {
   border: 2px solid #fff;
   padding: 8px;
 }
