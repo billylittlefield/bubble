@@ -62,8 +62,18 @@
       </div>
       <canvas id="game-canvas" width="600" height="440"></canvas>
     </div>
-
-
+    <div id="game-won" class="game-over">
+      <div>Congratulations!<br>&nbsp;&nbsp;You&nbsp;&nbsp;won!</div>
+      <div class="play-again"><span>Play&nbsp;&nbsp;again</span></div>
+    </div>
+    <div id="game-lost" class="game-over">
+      <div>THE&nbsp;&nbsp;BUBBLES&nbsp;&nbsp;WON!<br>YOU&nbsp;&nbsp;FAILED.</div>
+      <div class="play-again"><span>Play again</span></div>
+      <div id="cheater">
+        <div>I'm a cheater!</div>
+        <div>Let me start at my last level.</div>
+      </div>
+    </div>
 
     <script>
      var canvas = document.getElementById("game-canvas");
@@ -73,14 +83,6 @@
      window.LIVES = 5;
      window.SCORE = 0;
 
-     setTimeout(function() {
-       var tile = new Image();
-       tile.src = "assets/stone.png";
-       var pattern = ctx.createPattern(tile, "repeat");
-       ctx.fillStyle = pattern;
-       ctx.fillRect(0, 0, 650, 400);
-     }, 0);
-
      requestAnimFrame = (function() {
        return window.requestAnimationFrame       ||
               window.webkitRequestAnimationFrame ||
@@ -89,6 +91,41 @@
                 window.setTimeout(callback, 1000 / 60);
               };
      })();
+
+     var gameWonScreen = function() {
+       $("#game-won").fadeIn(1500);
+     }
+
+     var gameLostScreen = function() {
+       $("#game-lost").fadeIn(1500);
+     }
+
+     var newGame = function(level) {
+       var gameView = new BubbleGame.GameView(new BubbleGame.Game(level), ctx);
+
+       function mainLoop(timestamp) {
+         requestID = timestamp;
+         gameView.render();
+         if (gameView.gameWon) {
+           cancelAnimationFrame(requestID);
+           gameWonScreen();
+         } else if (gameView.gameLost) {
+           window.level = gameView.game.level;
+           cancelAnimationFrame(requestID);
+           gameLostScreen();
+         } else if (gameView.loading) {
+           setTimeout(function() {
+             this.requestAnimationFrame(mainLoop)
+             gameView.game.loading = false;
+           }, 3000);
+         } else {
+           window.requestAnimFrame(mainLoop);
+         }
+       }
+
+       mainLoop();
+
+     };
    </script>
 
    <script>
@@ -148,14 +185,19 @@
       $("#play-game").click(function() {
         $("#play-game").addClass("game-select");
         $("#options").fadeOut(1500);
-        setTimeout(function() {
-          var gameView = new BubbleGame.GameView(new BubbleGame.Game(), ctx);
-          function mainLoop() {
-            requestAnimFrame(mainLoop);
-            gameView.render();
-          }
-          requestAnimFrame(mainLoop);
-        }, 3000);
+
+        newGame(1);
+      });
+    });
+    $(function() {
+      $(".play-again").click(function() {
+        $("#game-won").fadeOut(1500);
+        $("#game-lost").fadeOut(1500);
+        newGame(1);
+      });
+      $("#cheater").click(function() {
+        $("#game-lost").fadeOut(1500);
+        newGame(window.level);
       });
     });
     </script>

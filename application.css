@@ -9,6 +9,7 @@
 
 body {
   font-family: 'Arcade Classic Regular', sans-serif;
+
 }
 
 h1 {
@@ -64,7 +65,7 @@ h1 {
   height: 440px;
   overflow: hidden;
   margin: auto;
-  border: 20px double #333;
+  border: 20px double #000;
 }
 
 #controls {
@@ -77,6 +78,64 @@ h1 {
 #controls > div {
   display: inline-block;
 }
+
+.game-over {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -220px;
+  margin-top: -50px;
+  width: 400px;
+  height: 200px;
+  background-color: #000;
+  border: 20px double #07FC1C;
+  font-size: 40px;
+  color: #fff;
+}
+
+#game-lost {
+  border: 20px double #FF0000;
+  height: 250px;
+}
+
+#cheater {
+  font-size: 16px;
+  text-align: center;
+  position: relative;
+  width: 132px;
+  top: 46px;
+  margin: auto;
+  padding: 4px;
+}
+
+#cheater:hover {
+  cursor: pointer;
+  border: 2px solid #fff;
+  padding: 2px;
+}
+
+.game-over > div:first-child {
+  text-align: center;
+  position: relative;
+  top: 20px;
+}
+
+.play-again {
+  position: relative;
+  top: 35px;
+  width: 204px;
+  margin: auto;
+  padding: 4px 11px;
+  border: 2px dashed #fff;
+}
+
+.play-again:hover {
+  cursor: pointer;
+  padding: 4px 11px;
+  border: 2px solid #fff;
+}
+
 
 .group:after {
   content: "";
