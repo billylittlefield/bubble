@@ -13,14 +13,13 @@
     <script src="lib/dragon.js"></script>
     <script src="lib/fireball.js"></script>
     <script src="lib/firewall.js"></script>
+    <script src="lib/pop.js"></script>
 
     <h1>Dragon Pop</h1>
-
-    <div id="controls" class="group">
-      <div>MOVE: LEFT/RIGHT ARROW</div>
-      <br>
-      <div>FIREBALL: SPACEBAR</div>
-    </div>
+    <div id="rules" class="group">
+      <div>>> LEFT / RIGHT to dodge bubbles</div>
+      <div>>> SPACEBAR to shoot fireballs</div>
+      <div>>> Earn COMBO points by popping<br>&nbsp;&nbsp;&nbsp;bubbles up into the ceiling!</div>
     </div>
     <div id="game-container">
       <div id="options">
@@ -42,7 +41,7 @@
           </div>
         </div>
         <div>
-          <div id="options-header">CHOOSE FIRE COLOR</div>
+          <div id="options-header">CHOOSE YOUR FIRE COLOR</div>
           <div id="fire-options">
             <div class="orange fire-option fire-select">
               <img id="orange-fire" src="assets/orange-fire-2.gif"/>
@@ -115,11 +114,11 @@
            gameLostScreen();
          } else if (gameView.loading) {
            setTimeout(function() {
-             this.requestAnimationFrame(mainLoop)
+             requestAnimFrame(mainLoop)
              gameView.game.loading = false;
            }, 3000);
          } else {
-           window.requestAnimFrame(mainLoop);
+           requestAnimFrame(mainLoop);
          }
        }
 
@@ -185,7 +184,6 @@
       $("#play-game").click(function() {
         $("#play-game").addClass("game-select");
         $("#options").fadeOut(1500);
-
         newGame(1);
       });
     });
