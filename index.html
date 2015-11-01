@@ -67,10 +67,10 @@
     </div>
     <div id="game-lost" class="game-over">
       <div>THE&nbsp;&nbsp;BUBBLES&nbsp;&nbsp;WON!<br>YOU&nbsp;&nbsp;FAILED.</div>
-      <div class="play-again"><span>Play again</span></div>
+      <div class="play-again"><span>Play&nbsp;&nbsp;again</span></div>
       <div id="cheater">
-        <div>I'm a cheater!</div>
-        <div>Let me start at my last level.</div>
+        <div>I'm&nbsp;&nbsp;a&nbsp;&nbsp;cheater.</div>
+        <div>Let me&nbsp;&nbsp;restart where&nbsp;&nbsp;I&nbsp;&nbsp;died.</div>
       </div>
     </div>
 
@@ -114,22 +114,22 @@
            gameLostScreen();
          } else if (gameView.loading) {
            setTimeout(function() {
-             gameView.countdown("LEVEL" + gameView.game.level);
+             gameView.countdown("LEVEL " + gameView.game.level);
              setTimeout(function() {
-               gameView.countdown(3);
+               gameView.countdown("3");
                setTimeout(function() {
-                 gameView.countdown(2);
+                 gameView.countdown("2");
                  setTimeout(function() {
-                   gameView.countdown(1);
+                   gameView.countdown("1");
                    setTimeout(function() {
                      gameView.countdown("START!");
                      setTimeout(function() {
                        requestAnimFrame(mainLoop);
                        gameView.game.loading = false;
-                     }, 1000);
-                   }, 1000)
-                 }, 1000);
-               }, 1000);
+                     }, 750);
+                   }, 750)
+                 }, 750);
+               }, 750);
              }, 1500);
            }, 2000);
          } else {

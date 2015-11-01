@@ -9,13 +9,15 @@
 
 body {
   font-family: 'Arcade Classic Regular', sans-serif;
-
+  color: #fff;
+  background-color: #222;
 }
 
 h1 {
   text-align: center;
   font-size: 72px;
   margin: 0;
+  text-shadow: 2px 2px #ff0000;
 }
 
 #options {
@@ -30,28 +32,29 @@ h1 {
 #options-header {
   font-size: 48px;
   color: #fff;
-  text-shadow: 3px 3px #000;
+  text-shadow: 1px 2px #000;
   text-align: center;
 }
 
 #play-game {
   font-size: 36px;
   color: #fff;
-  text-shadow: 3px 3px #000;
+  text-shadow: 1px 2px #000;
   width: 200px;
   height: 50px;
   text-align: center;
-  margin: 8px auto 0px auto;
+  margin: 19px auto 0px auto;
 }
 
 #play-game:hover {
   cursor: pointer;
-  margin-top: 6px;
+  margin-top: 17px;
+  text-shadow: 1px 2px #ff0000;
   border: 2px dashed #fff;
 }
 
 #play-game.game-select {
-  margin-top: 6px;
+  margin-top: 17px;
   border: 2px solid #fff;
 }
 
@@ -62,10 +65,12 @@ h1 {
 
 #game-container {
   width: 600px;
+  top: 10px;
   height: 440px;
   overflow: hidden;
   margin: auto;
-  border: 20px double #000;
+  border: 3px solid #fff;
+  position: relative;
 }
 
 #rules {
@@ -85,20 +90,20 @@ h1 {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -220px;
+  margin-left: -203px;
   margin-top: -50px;
   width: 400px;
   height: 200px;
-  background-color: #000;
-  border: 20px double #07FC1C;
+  background-color: #222;
+  border: 3px solid #07FC1C;
   font-size: 40px;
   color: #fff;
 }
 
 #game-lost {
-  border: 20px double #FF0000;
+  border: 3px solid #FF0000;
   height: 250px;
-  margin-top: -90px;
+  margin-top: -75px;
 }
 
 #cheater {
