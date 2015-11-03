@@ -149,3 +149,13 @@ h1 {
   display: block;
   clear: both;
 }
+
+#music-toggle {
+  position: relative;
+  left: 20%;
+  width: 100px;
+}
+
+#music-toggle:hover {
+  cursor: pointer;
+}
