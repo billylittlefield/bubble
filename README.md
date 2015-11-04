@@ -90,6 +90,6 @@ The dragon does not follow the velocity model of the bubbles because the dragon 
   };
   ```
   
-  ## Summary
+## Summary
   
 I had a blast creating this game. This was my first incorporation of sprites animations, and it opens a whole new door for creating dynamic gameplay. I also learned a great deal about the value of requestAnimationFrame vs. setTimeout when updating the game. RequestAnimationFrame allows for much smoother gameplay, and through use of the timestamp can accomodate browser hangups or frames with heavy calculation. Setting up the pre-game and post-game modals / views also let me practice more jQuery event triggers. On the whole, I'm happy with how the game looks and I think the gameplay is pretty addictive. Let me know if you can beat level 11. I came within 2 blue bubbles of it and choked under the pressure. Happy popping!
