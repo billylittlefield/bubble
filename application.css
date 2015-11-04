@@ -88,7 +88,7 @@ h1 {
 .game-over {
   display: none;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   margin-left: -203px;
   margin-top: -50px;
