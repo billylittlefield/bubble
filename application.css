@@ -75,7 +75,7 @@ h1 {
 
 #rules {
   font-family: monospace;
-  height: 90px;
+  height: 105px;
   margin-top: -5px;
   width: 600px;
   left: 50%;
@@ -152,10 +152,26 @@ h1 {
 
 #music-toggle {
   position: relative;
-  left: 20%;
-  width: 100px;
+  display: inline-block;
+  width: 150px;
 }
 
 #music-toggle:hover {
+  cursor: pointer;
+}
+
+#sound-effects-toggle {
+  display: inline-block;
+  float: right;
+}
+
+#audio {
+  width: 600px;
+  margin: auto;
+  font-family: monospace;
+  font-size: 18px;
+}
+
+#sound-effects-toggle:hover {
   cursor: pointer;
 }

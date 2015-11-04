@@ -21,9 +21,15 @@
       <div>>> SPACEBAR to shoot fireballs</div>
       <div>>> Earn COMBO points by popping<br>&nbsp;&nbsp;&nbsp;bubbles up into the ceiling!</div>
     </div>
-    <div id="music-toggle">
-      Toggle music
+    <div id="audio">
+      <div id="music-toggle">
+        Toggle music
+      </div>
+      <div id="sound-effects-toggle">
+        Toggle sound effects
+      </div>
     </div>
+
     <div id="game-container">
       <div id="options">
         <div>
@@ -142,6 +148,9 @@
 
        mainLoop();
 
+       $("#sound-effects-toggle").click(function() {
+         gameView.game.soundEffects = !gameView.game.soundEffects;
+       })
      };
    </script>
 
@@ -202,7 +211,7 @@
       $("#play-game").click(function() {
         $("#play-game").addClass("game-select");
         $("#options").fadeOut(1500);
-        newGame(5);
+        newGame(1);
       });
     });
     $(function() {
