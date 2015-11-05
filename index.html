@@ -102,6 +102,13 @@
      })();
 
      var gameWonScreen = function() {
+       var victory = new Audio("assets/victory-pvp.mp3");
+       var fanfare = new Audio("assets/victory-fanfare.wav");
+       window.music.pause();
+       victory.play();
+       setTimeout(function() {
+         fanfare.play();
+       }, 2000);
        $("#game-won").fadeIn(1500);
      }
 
