@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Dragon Pop</title>
-    <link rel="stylesheet" type="text/css" href="application.css">
+    <link rel="stylesheet" type="text/css" href="./assets/stylesheets/application.css">
     <script type="text/javascript" src="./assets/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="./assets/benchmark.js"></script>
   </head>
   <body>
     <script src="lib/gameView.js"></script>
@@ -36,15 +37,15 @@
           <div id="options-header">CHOOSE YOUR DRAGON</div>
           <div id="dragon-options">
             <div class="orange dragon-option dragon-select">
-              <img id="orange-dragon" src="assets/orange-dragon-2.gif"/>
+              <img id="orange-dragon" src="images/orange-dragon-2.gif"/>
               <label>Brabiant</label>
             </div>
             <div class="green dragon-option">
-              <img id="green-dragon" src="assets/green-dragon-2.gif"/>
+              <img id="green-dragon" src="images/green-dragon-2.gif"/>
               <label>Whyerz</label>
             </div>
             <div class="white dragon-option">
-              <img id="white-dragon" src="assets/white-dragon-2.gif"/>
+              <img id="white-dragon" src="images/white-dragon-2.gif"/>
               <label>Roondris</label>
             </div>
           </div>
@@ -53,15 +54,15 @@
           <div id="options-header">CHOOSE YOUR FIRE COLOR</div>
           <div id="fire-options">
             <div class="orange fire-option fire-select">
-              <img id="orange-fire" src="assets/orange-fire-2.gif"/>
+              <img id="orange-fire" src="images/orange-fire-2.gif"/>
               <label>ORANGE</label>
             </div>
             <div class="green fire-option">
-              <img id="green-fire" src="assets/green-fire-2.gif"/>
+              <img id="green-fire" src="images/green-fire-2.gif"/>
               <label>GREEN</label>
             </div>
             <div class="blue fire-option">
-              <img id="blue-fire" src="assets/blue-fire-2.gif"/>
+              <img id="blue-fire" src="images/blue-fire-2.gif"/>
               <label>BLUE</label>
             </div>
           </div>
@@ -102,8 +103,8 @@
      })();
 
      var gameWonScreen = function() {
-       var victory = new Audio("assets/victory-pvp.mp3");
-       var fanfare = new Audio("assets/victory-fanfare.wav");
+       var victory = new Audio("sounds/victory-pvp.mp3");
+       var fanfare = new Audio("sounds/victory-fanfare.wav");
        window.music.pause();
        victory.play();
        setTimeout(function() {
@@ -126,29 +127,11 @@
            cancelAnimationFrame(requestID);
            gameWonScreen();
          } else if (gameView.gameLost) {
-           window.level = gameView.game.level;
+           window .level = gameView.game.level;
            cancelAnimationFrame(requestID);
            gameLostScreen();
          } else if (gameView.loading) {
-           setTimeout(function() {
-             gameView.countdown("LEVEL " + gameView.game.level);
-             setTimeout(function() {
-               gameView.countdown("3");
-               setTimeout(function() {
-                 gameView.countdown("2");
-                 setTimeout(function() {
-                   gameView.countdown("1");
-                   setTimeout(function() {
-                     gameView.countdown("START!");
-                     setTimeout(function() {
-                       requestAnimFrame(mainLoop);
-                       gameView.game.loading = false;
-                     }, 750);
-                   }, 750)
-                 }, 750);
-               }, 750);
-             }, 1500);
-           }, 2000);
+           gameView.playCountdown(mainLoop);
          } else {
            requestAnimFrame(mainLoop);
          }
@@ -166,27 +149,27 @@
     $(function() {
       $(".dragon-option").hover(
         function() {
-          $(this).children("#orange-dragon").attr("src", "assets/orange-dragon.gif");
-          $(this).children("#green-dragon").attr("src", "assets/green-dragon.gif");
-          $(this).children("#white-dragon").attr("src", "assets/white-dragon.gif");
+          $(this).children("#orange-dragon").attr("src", "images/orange-dragon.gif");
+          $(this).children("#green-dragon").attr("src", "images/green-dragon.gif");
+          $(this).children("#white-dragon").attr("src", "images/white-dragon.gif");
         },
         function() {
-          $(this).children("#orange-dragon").attr("src", "assets/orange-dragon-2.gif");
-          $(this).children("#green-dragon").attr("src", "assets/green-dragon-2.gif");
-          $(this).children("#white-dragon").attr("src", "assets/white-dragon-2.gif");
+          $(this).children("#orange-dragon").attr("src", "images/orange-dragon-2.gif");
+          $(this).children("#green-dragon").attr("src", "images/green-dragon-2.gif");
+          $(this).children("#white-dragon").attr("src", "images/white-dragon-2.gif");
         });
     });
     $(function() {
       $(".fire-option").hover(
         function() {
-          $(this).children("#orange-fire").attr("src", "assets/orange-fire.gif");
-          $(this).children("#green-fire").attr("src", "assets/green-fire.gif");
-          $(this).children("#blue-fire").attr("src", "assets/blue-fire.gif");
+          $(this).children("#orange-fire").attr("src", "images/orange-fire.gif");
+          $(this).children("#green-fire").attr("src", "images/green-fire.gif");
+          $(this).children("#blue-fire").attr("src", "images/blue-fire.gif");
         },
         function() {
-          $(this).children("#orange-fire").attr("src", "assets/orange-fire-2.gif");
-          $(this).children("#green-fire").attr("src", "assets/green-fire-2.gif");
-          $(this).children("#blue-fire").attr("src", "assets/blue-fire-2.gif");
+          $(this).children("#orange-fire").attr("src", "images/orange-fire-2.gif");
+          $(this).children("#green-fire").attr("src", "images/green-fire-2.gif");
+          $(this).children("#blue-fire").attr("src", "images/blue-fire-2.gif");
         });
     });
     $(function() {

@@ -44,13 +44,13 @@ div#fire-options > div.fire-select {
 }
 
 #fire-options > div.fire-select.orange > img {
-  content: url("assets/orange-fire.gif");
+  content: url("../../images/orange-fire.gif");
 }
 #fire-options > div.fire-select.green > img {
-  content: url("assets/green-fire.gif");
+  content: url("../../images/green-fire.gif");
 }
 #fire-options > div.fire-select.blue > img {
-  content: url("assets/blue-fire.gif");
+  content: url("../../images/blue-fire.gif");
 }
 
 .orange.fire-option {

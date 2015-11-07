@@ -3,7 +3,7 @@
 
 @font-face {
     font-family:"Arcade Classic Regular";
-    src: url("assets/ARCADECLASSIC.TTF")
+    src: url("../ARCADECLASSIC.TTF")
 }
 
 
@@ -24,7 +24,7 @@ h1 {
   width: 600px;
   height: 420px;
   position: absolute;
-  background-image: url("assets/stone.png");
+  background-image: url("../../images/stone.png");
   background-repeat: repeat;
   padding-top: 20px
 }
