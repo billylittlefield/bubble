@@ -36,6 +36,7 @@
         <div>
           <div id="options-header">CHOOSE YOUR DRAGON</div>
           <div id="dragon-options">
+
             <div class="orange dragon-option dragon-select">
               <img id="orange-dragon" src="images/orange-dragon-2.gif"/>
               <label>Brabiant</label>
@@ -86,63 +87,80 @@
 
 
     <script>
-     var canvas = document.getElementById("game-canvas");
-     var ctx = canvas.getContext("2d");
-     window.DRAGON = "orange";
-     window.FIRE = "orange";
-     window.LIVES = 5;
-     window.SCORE = 0;
+      var canvas = document.getElementById("game-canvas");
+      var ctx = canvas.getContext("2d");
+      window.DRAGON = "orange";
+      window.FIRE = "orange";
+      window.SCORE = 0;
 
-     requestAnimFrame = (function() {
-       return window.requestAnimationFrame       ||
-              window.webkitRequestAnimationFrame ||
-              window.mozRequestanimationFrame    ||
-              function(callback){
-                window.setTimeout(callback, 1000 / 60);
+      // requestAnimationFrame polyfill by Erik Möller
+      // fixes from Paul Irish and Tino Zijdel
+
+      (function() {
+          var lastTime = 0;
+          var vendors = ['ms', 'moz', 'webkit', 'o'];
+          for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+              window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+              window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                         || window[vendors[x]+'CancelRequestAnimationFrame'];
+          }
+
+          if (!window.requestAnimationFrame)
+              window.requestAnimationFrame = function(callback, element) {
+                  var currTime = new Date().getTime();
+                  var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                  var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                    timeToCall);
+                  lastTime = currTime + timeToCall;
+                  return id;
               };
-     })();
 
-     var gameWonScreen = function() {
-       var victory = new Audio("sounds/victory-pvp.mp3");
-       var fanfare = new Audio("sounds/victory-fanfare.wav");
-       window.music.pause();
-       victory.play();
-       setTimeout(function() {
+          if (!window.cancelAnimationFrame)
+              window.cancelAnimationFrame = function(id) {
+                  clearTimeout(id);
+              };
+      }());
+
+      var gameWonScreen = function() {
+        var victory = new Audio("sounds/victory-pvp.mp3");
+        var fanfare = new Audio("sounds/victory-fanfare.wav");
+        window.music.pause();
+        victory.play();
+        setTimeout(function() {
          fanfare.play();
-       }, 2000);
-       $("#game-won").fadeIn(1500);
-     }
+        }, 2000);
+        $("#game-won").fadeIn(1500);
+      }
 
-     var gameLostScreen = function() {
-       $("#game-lost").fadeIn(1500);
-     }
+      var gameLostScreen = function() {
+        $("#game-lost").fadeIn(1500);
+      }
 
-     var newGame = function(level) {
-       var gameView = new BubbleGame.GameView(new BubbleGame.Game(level), ctx);
+      var newGame = function(level) {
+        var gameView = new BubbleGame.GameView(new BubbleGame.Game(level), ctx);
 
-       function mainLoop(timestamp) {
-         requestID = timestamp;
+        function mainLoop(timestamp) {
          gameView.render(timestamp);
          if (gameView.gameWon) {
-           cancelAnimationFrame(requestID);
+           cancelAnimationFrame(timestamp);
            gameWonScreen();
          } else if (gameView.gameLost) {
            window .level = gameView.game.level;
-           cancelAnimationFrame(requestID);
+           cancelAnimationFrame(timestamp);
            gameLostScreen();
          } else if (gameView.loading) {
            gameView.playCountdown(mainLoop);
          } else {
-           requestAnimFrame(mainLoop);
+           requestAnimationFrame(mainLoop);
          }
-       }
+        }
 
-       mainLoop();
-
-       $("#sound-effects-toggle").click(function() {
+        $("#sound-effects-toggle").click(function() {
          gameView.game.soundEffects = !gameView.game.soundEffects;
-       })
-     };
+        })
+
+        mainLoop();
+      };
    </script>
 
    <script>
